@@ -7,7 +7,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.devtools.idealized.Javascript;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -16,11 +15,11 @@ import Driver.DriverFactory;
 
 public class DriverUtil {
 	
-	private WebDriver driver = null;
+	private WebDriver driver;
 	
-	private JavascriptExecutor jse = null;
+	private static JavascriptExecutor jse;
 	
-	private WebDriverWait wait = null;
+	private static WebDriverWait wait;
 	
 	public void launchSession(String url) {
 		//Driver.getInstance().setDriver(driver);
@@ -39,6 +38,15 @@ public class DriverUtil {
 	public WebElement waitUntilElementToBeClickable(By locator) {
 		
 		WebElement ele = wait.until(ExpectedConditions.elementToBeClickable(locator));
+		executionOrder(ele);
+		
+		return ele;
+		
+	}
+public WebElement waitUntilElementToBeVisible(By locator) {
+		
+		WebElement ele = wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+		executionOrder(ele);
 		
 		return ele;
 		
@@ -54,7 +62,7 @@ public class DriverUtil {
 	
 	public void pause() {
 		try {
-			TimeUnit.MILLISECONDS.sleep(2000);
+			TimeUnit.MILLISECONDS.sleep(500);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -65,6 +73,13 @@ public class DriverUtil {
 	}
 	public void closeBrowser() {
 		Driver.getInstance().closeDriver();
+	}
+	
+	public void executionOrder(WebElement element) {
+		scrollToElement(element);
+		highlightElement(element);
+		pause();
+		removeHighlightElement(element);
 	}
 
 }

@@ -15,6 +15,7 @@ LandingPageLocators landingPage = new LandingPageLocators();
 		
 		
 	}
+	
 	@And("^user clicks sign in$")
 	public void signIn() {
 		
