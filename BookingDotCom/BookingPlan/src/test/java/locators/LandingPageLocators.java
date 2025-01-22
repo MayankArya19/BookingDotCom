@@ -15,26 +15,18 @@ public class LandingPageLocators extends DriverUtil {
 	public void closePopUp() {
 
 		WebElement element = waitUntilElementToBeClickable(popUp);
-		
-		scrollToElement(element);
-		highlightElement(element);
-		pause();
-		removeHighlightElement(element);
 		element.click();
 		pause();
 	}
 	
 	public void clickSignIn() {
 		WebElement element = waitUntilElementToBeClickable(signIn);
-		
-		scrollToElement(element);
-		highlightElement(element);
-		pause();
-		removeHighlightElement(element);
+
 		element.click();
 		pause();
 		
 	}
+	
 	
 
 }

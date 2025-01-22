@@ -7,4 +7,5 @@ Feature: Login
     Given user is on landing page
     When user dismisses popup
     And user clicks sign in
+    When user enters username
     Then user closes browser
