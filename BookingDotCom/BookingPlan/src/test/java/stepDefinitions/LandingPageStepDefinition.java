@@ -16,6 +16,11 @@ LandingPageLocators landingPage = new LandingPageLocators();
 		
 	}
 	
+	@Then("^user verifies stays$")
+	public void staysService() {
+		landingPage.verifyStays();
+	}
+	
 	@And("^user clicks sign in$")
 	public void signIn() {
 		
@@ -31,6 +36,12 @@ LandingPageLocators landingPage = new LandingPageLocators();
 	
 	@Then("^user closes browser$")
 	public void closeBrowser() {
+
+		landingPage.closeBrowser();
+		
+	}
+	@And("^user closes browsers$")
+	public void closeBrowsers() {
 
 		landingPage.closeBrowser();
 		
